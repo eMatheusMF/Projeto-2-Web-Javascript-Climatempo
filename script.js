@@ -5,70 +5,6 @@ function fecharlogin()   {
     document.getElementById('modal').style.top = "-100%";
 }
 
-/*
-const getUserInfo = async () => {
-
-    const response = await fetch(`https://reqres.in/api/login`)
-    const data = await response.json()
-    console.log(data);
-}
-
-getUserInfo();
-*/
-
-async function getUserInfo() {
-    try {
-        const response = await fetch('https://reqres.in/api/users')
-        const data = await response.json()
-        console.log(data);
-    } catch (err) {
-        console.error(err)
-    }
-
-    entrar.addEventListener('click', function(data) { 
-
-        const ema = document.querySelector('#email');
-        const sen = document.querySelector('#senha');
-
-        if(data.email === ema){
-            javascript();
-        }else{
-            alert("usuário ou senha incorretos!")
-        }
-    })
-}
-
-getUserInfo()
-
-/*
-
-const getUserInfo = async (id) => {
-
-    const data = fetch(`https://reqres.in/api/login`)
-        .then(response => {
-            console.log(response);
-    })
-    console.log(data);
-}
-/*
-function validacao() {
-    entrar.addEventListener('click', function() {   
-        const ema = document.querySelector('#email');
-        const sen = document.querySelector('#senha');
-    })
-
-    if(data.email=ema){
-        if(data.password=sen){
-            javascript();
-        }
-    }else{
-        alert("usuário ou senha incorretos!")
-    }
-}
-
-getUserInfo(`eve.holt@reqres.in`);
-*/
-
 const api = {
     key: "b1acd38efcd959af9979088d310b48a2",
     base: "https://api.openweathermap.org/data/2.5/",
@@ -204,3 +140,26 @@ function javascript(){
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 }
+
+javascript();
+
+async function getUserInfo() {
+    const response = await fetch('https://reqres.in/api/users')
+    const data = await response.json()
+    console.log(data)
+}
+
+entrar.addEventListener('click', function(data) { 
+
+    let email = document.querySelector('#email');
+    let senha = document.querySelector('#senha');
+
+    if(email.value == data){
+        javascript();
+        alert("Sucesso!")
+    }else{
+        alert("usuário ou senha incorretos!")
+    }
+})
+
+getUserInfo()
