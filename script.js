@@ -141,25 +141,71 @@ function javascript(){
     }
 }
 
-javascript();
 
-async function getUserInfo() {
-    const response = await fetch('https://reqres.in/api/users')
-    const data = await response.json()
-    console.log(data)
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const form = document.querySelector("form");
+
+function pegaToken(){
+
+    const inputEmail = document.querySelector('input[type="text"]');
+    const inputPassword = document.querySelector('input[type="password"]');
+
+    fetch('https://reqres.in/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            email: inputEmail.value,
+            password: inputPassword.value,
+        })
+    }).then((response) => {
+        if (response.status == 200) {
+            javascript();
+        }
+        return response.json();
+    }).then((data) => {
+        console.log(data)
+    })
 }
 
-entrar.addEventListener('click', function(data) { 
 
-    let email = document.querySelector('#email');
-    let senha = document.querySelector('#senha');
+function validatorEmail(email) {
+    let emailPattern = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+    return emailPattern.test(email);
+}
+    
+function validatorPassword(password) {
+    let passwordPattern = /^[a-zA-Z0-9!@#$%^&*]{4,16}$/;
+    return passwordPattern.test(password);
+}
 
-    if(email.value == data){
-        javascript();
-        alert("Sucesso!")
-    }else{
-        alert("usuário ou senha incorretos!")
+form.addEventListener("submit", (e) => {
+    
+    e.preventDefault()
+
+    if (validatorEmail(email.value) !== true) {
+        textEmail.textContent = "O formato do email deve ser Ex: xxxxx@xxx.com";
+    } else {
+        textEmail.textContent = "";
     }
-})
+    
+    if (validatorPassword(password.value) !== true) {
+        textPassword.textContent = "A senha deve conter no mínimo 4 caracteres com números e letras";
+    } else {
+        textPassword.textContent = "";
+    }
+      
+    if (email.value == "" || password.value == "") {
+        textForm.textContent = "Você precisa preencher todos os campos!";
+    } else if ( validatorEmail(email.value) === true && validatorPassword(password.value) === true ) {
+        console.log(email.value);
+        console.log(password.value);
+        textForm.textContent = "";
+        textEmail.textContent = "";
+        textPassword.textContent = "";
+    } else {
+        console.log("Requisição não atendida");
+    }
 
-getUserInfo()
+    pegaToken();
+});
