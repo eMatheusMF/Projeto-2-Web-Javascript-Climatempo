@@ -80,7 +80,7 @@ small{
   width: 100%;
   top: -100%;
   transition: 350ms;
-  background-color: #404040;
+  background-image: linear-gradient(to top left, rgb(12, 22, 168), rgb(0, 047, 92), rgb(121, 14, 131));
   position: fixed;
   display: flex;
   flex-direction: row;
@@ -89,30 +89,104 @@ small{
 }
 
 .modal{
-  height: 47%;
+  height: 70%;
   width: 40%;
-  background-color: #ffffff;
+  border-radius: 10px;
+  background-image: linear-gradient(to top, #ffffff, #ffffff, #88acc9);
   position: relative;
   display: block;
 }
 
-.modal span{
+.cabacalho{
+  height: 125px;
+  width: 100%;
+  margin: 0%;
+  color: #000000;
+}
+
+.close{
   font-size: 22px;
-  margin: 10px;
+  margin-right: 20px;
   transition: 350ms;
   color: #000000;
   cursor: pointer;
   display: block;
 }
 
-.modal span:hover{
-  color: #4d4a4a;
-  transition: 350ms;
+.close:hover{
+  color: #000000;
+  opacity: 1;
 }
 
 .log{
-  font-size: 32px;
+  font-size: 46px;
+  margin: 17px;
+  margin-left: 10%;
+}
+
+#textForm2{
   margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  height: 30px;
+  width: 60%;
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.emailsenha{
+  font-size: 20px;
+}
+
+.ema{
+  margin-bottom: 10px;
+}
+
+#textEmail{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#textPassword{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.botaoo{
+  margin: 10px;
+  height: 50px;
+  width: 40%;
+  border-radius: 50px;
+  border: none;
+  background-color: #1d1c1c;
+  color: #ffffff;
+}
+
+.botaoo:hover{
+  background-color: #000000;
+  transition: background-color 1s;
+}
+
+#email{
+  height: 50px;
+  width: 50%;
+  border-radius: 8px;
+}
+
+#password{
+  height: 50px;
+  width: 50%;
+  border-radius: 8px;
 }
 
 .azul2 {
@@ -382,6 +456,11 @@ small{
 
   .form-control{
     display: none;
+  }
+
+  .modal{
+    height: 70%;
+    width: 80%;
   }
 
   .pesquisa{

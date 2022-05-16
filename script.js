@@ -141,7 +141,6 @@ function javascript(){
     }
 }
 
-
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const form = document.querySelector("form");
@@ -161,13 +160,19 @@ function pegaToken(){
     }).then((response) => {
         if (response.status == 200) {
             javascript();
+            textForm2.textContent = "Login feito com sucesso!";
+            document.getElementById("textForm2").style.color = "green";
+            document.getElementById("textForm2").style.backgroundColor = '#c2dbbe';
+        }else{
+            textForm2.textContent = "Usuário incorreto!";
+            document.getElementById("textForm2").style.color = "red";
+            document.getElementById("textForm2").style.backgroundColor = '#dbbebe';
         }
         return response.json();
     }).then((data) => {
         console.log(data)
     })
 }
-
 
 function validatorEmail(email) {
     let emailPattern = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
@@ -184,22 +189,24 @@ form.addEventListener("submit", (e) => {
     e.preventDefault()
 
     if (validatorEmail(email.value) !== true) {
-        textEmail.textContent = "O formato do email deve ser Ex: xxxxx@xxx.com";
+        textEmail.textContent = "O formato do email deve ser Exemplo: xxxxx@xxx.com";
     } else {
         textEmail.textContent = "";
     }
     
     if (validatorPassword(password.value) !== true) {
-        textPassword.textContent = "A senha deve conter no mínimo 4 caracteres com números e letras";
+        textPassword.textContent = "A senha deve conter no mínimo 4 caracteres";
     } else {
         textPassword.textContent = "";
     }
       
     if (email.value == "" || password.value == "") {
         textForm.textContent = "Você precisa preencher todos os campos!";
-    } else if ( validatorEmail(email.value) === true && validatorPassword(password.value) === true ) {
-        console.log(email.value);
-        console.log(password.value);
+    } else {
+        textForm.textContent = "";
+    }
+    
+    if ( validatorEmail(email.value) === true && validatorPassword(password.value) === true ) {
         textForm.textContent = "";
         textEmail.textContent = "";
         textPassword.textContent = "";

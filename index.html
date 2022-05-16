@@ -123,25 +123,29 @@
 
     <div class="bg-modal" id="modal">
       <div class="modal">
-        <span class="close" onclick="fecharlogin()">&times;</span>
-        <div class="cadastro">
+        <div class="cabacalho">
+          <span class="close" onclick="fecharlogin()">&times;</span>
           <h1 class="log"><b>Login</b></h1>
-
+          <span class="emailsenha"><b>email: eve.holt@reqres.in<br>senha: cityslicka</b></span>
+        </div>
+        <div class="cadastro">
+          <small id="textForm2"></small>
+          <small id="textForm"></small>
+        
           <form autocomplete="off">
-            <div>
-              <label for="email">E-mail: </label>
-              <input type="text" id="email" placeholder="Digite o seu e-mail" />
+            <div class="ema">
+              <label for="email"><b>E-mail: </b></label>
+              <input type="text" id="email" placeholder="  Digite o seu e-mail" />
               <small id="textEmail"></small>
             </div>
       
-            <div>
-              <label for="password">Senha:</label>
-              <input type="password" id="password" placeholder="Digite a sua senha"/>
+            <div class="pass">
+              <label for="password"><b>Senha:</b></label>
+              <input type="password" id="password" placeholder="  Digite a sua senha"/>
               <small id="textPassword"></small>
             </div>
-            <button type="submit">Entrar</button>
-      
-            <small id="textForm"></small>
+            <button class="botaoo" type="submit">Entrar</button>
+    
           </form>
           
         </div>
